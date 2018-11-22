@@ -1,4 +1,4 @@
-# nextStage-project
+# NextStage-project
 
 
 ## Description
