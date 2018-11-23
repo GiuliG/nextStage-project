@@ -12,7 +12,8 @@ router.post('/signup', (req, res, next) => {
   const { email, password } = req.body;
   const user = {
     email,
-    password
+    password,
+    role: 'Attendee'
   };
   User.create(user)
     .then((user) => {
@@ -29,11 +30,17 @@ router.get('/signup-host', (req, res, next) => {
 });
 
 router.post('/signup-host', (req, res, next) => {
-  const { email, password, role } = req.body;
+  const { email, password, city, address, phoneNumber, roomCapacity } = req.body;
   const user = {
     email,
     password,
-    role
+    role: 'Host',
+    host: {
+      city,
+      address,
+      phoneNumber,
+      roomCapacity
+    }
   };
   User.create(user)
     .then((user) => {
@@ -47,6 +54,27 @@ router.post('/signup-host', (req, res, next) => {
 // Get signup page for performer
 router.get('/signup-perform', (req, res, next) => {
   res.render('auth/signup-perform');
+});
+
+router.post('/signup-perform', (req, res, next) => {
+  const { email, password, bandName, genre } = req.body;
+  console.log(req.body);
+  const user = {
+    email,
+    password,
+    role: 'Artist',
+    artist: {
+      bandName,
+      genre
+    }
+  };
+  User.create(user)
+    .then((user) => {
+      console.log('created user');
+      res.redirect('/');
+    }
+    )
+    .catch(next);
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 <h1>Perform</h1>
 
-<form method="POST" action="/auth/signup">
+<form method="POST" action="/auth/signup-perform">
  <div>
    <label>Email</label>
    <input type="email" name="email" required/>
@@ -12,26 +12,42 @@
    <input type="password" name="password" required/>
  </div>
 
+<div>
+   <label>Band/Artist Name </label>
+   <input type="string" name="bandName"/>
+ </div>
+
  
 
- <div>
-   <label>Category:</label>
-   <input type="number" name="room-capacity" required/>
- </div>
+<div>
+  <label for="genre" >Choose a music genre:</label>
+    <select id="music-select" name="genre">
+      <option value="rock">Rock</option>
+      <option value="jazz">Jazz</option>
+      <option value="hip-hop">Hip-Hop</option>
+      <option value="pop">Pop</option>
+      <option value="country">Country</option>
+      <option value="metal">Metal</option>
+      <option value="classic">Classic</option>
+      <option value="electronic">Electronic</option>
+      <option value="blues">Blues</option>
+      <option value="rnb">RnB</option>
+    </select>
+</div>
 
  <div>
    <label>Facebook Profile Link:</label>
-   <input type="media_type" name="room-capacity" required/>
+   <input type="media_type" name="socialMedia"/>
  </div>
 
 <div>
    <label>Instagram Profile Link:</label>
-   <input type="media_type" name="room-capacity" required/>
+   <input type="media_type" name="socialMedia"/>
  </div>
 
 <div>
    <label>Youtube Profile Link:</label>
-   <input type="media_type" name="room-capacity" required/>
+   <input type="media_type" name="socialMedia"/>
  </div>
 
  <div class="field submit">

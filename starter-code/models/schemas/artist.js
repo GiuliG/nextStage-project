@@ -13,7 +13,7 @@ const userSchema = new Schema({
   genre: {
     type: String,
     required: true,
-    enum: ['Rock', 'Jazz', 'Hip-Hop', 'Pop', 'Country', 'Classic', 'Electronic', 'Blues', 'RnB', 'Experimental']
+    enum: ['rock', 'jazz', 'hip-hop', 'pop', 'country', 'metal', 'classic', 'electronic', 'blues', 'rnb']
   },
   socialMediaLink: String
 });
