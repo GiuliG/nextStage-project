@@ -25,9 +25,12 @@ Attendee = person that wants to attend the event.
 - **logout** - as a user I also want to logout.
  
 - **Host List Page** -  as an artist, I want to see the list of places I can pick for my gig.
-- **Request Page** -  as a host, I want to see which artist wants to book my place and I want to be able to accept or reject their enquiry. 
-- **Next Show page**  - as an artist, I want to see whether my request was accepted and, if so, I want to see the list of events I am going to run. 
-- **Event Tickets** - As an attendee I want to book my seat and see how many tickets are available. 
+- **Accept Request** -  as a host, I want to see which artist wants to book my place and I want to be able to accept 
+- **Reject Request** - or reject their enquiry.
+- **See my requests** - as an artist, I want to see the status of my requestsd
+- **Next Show page**  - as an artist, I want to see the list of events I am going to run.
+- **See the list of events** - As an possible attendee I want to see a list of events on the homepage
+- **Event Tickets** - As an attendee I want to book my seat and see how many tickets are available on the homepage. 
 
 
 ## Backlog
@@ -68,14 +71,14 @@ If logged in redirects to /.
 If logged in redirects to /. Check whether the user already exists, and if not, create profile. 
 Body (email, password)
  
--**Become a Host**- -/auth/host
+-**Become a Host (signup)**- -/auth/host
 - GET
 If logged in redirects to /host/:hostId
 - POST
 If logged in redirects to /host/:hostId. Check whether the user already exists, and if not, create profile. 
 Body (email, password, city, address, phone, room capacity, images)
  
--**Perform**- -/auth/artist
+-**Perform (signup)**- -/auth/artist
 - GET
 If logged in redirects to /artist/:artistId
 - POST
@@ -87,11 +90,10 @@ Body (email, password, band name, genre, social media links)
 You have to be logged in, if not redirects to /. 
 Body (empty)
  
--**Request**- /request/:requestId/
+-**Request (Host)**- /request/me/
 - GET 
-if they are logged in, they can see who requested their place. Check if the id exists and is valid.
-params(:requestId)
- 
+if they are logged in and they are a host, they can see who requested their place. 
+
 -**Request Accepted**- /request/:requestId/accept
 - POST 
 they can accept the requests, if they are logged in and they are the host. Once the request gets accepted, the event is created. Check if the id exists and is valid.
@@ -106,10 +108,10 @@ params(:requestId)
 - GET 
 if they are logged, they can see the hosts list. This page will be accessed only by existing artists. 
  
--**Request Start**- /request/:hostId/
+-**Request Start**- /request/create
 - POST
 if they are logged in, if the one that is making the request is an artist and that artist has not done this request before and it has not been declined already. 
-param (hostId)
+req.body - hostId)
  
 -**Next Shows**- /nextShow
 - GET 
@@ -124,10 +126,19 @@ if they are logged in, if they are existing artists, if their request was accept
 
 ## Models
 
-Host
+User
 ```
 Email: string, required, unique
 Password: string, required
+Role: String
+Info: {
+ Host: Host.Schema,
+ Artist: Artist.Schema
+}
+```
+
+Host
+```
 City: string, required
 Address: string, required
 Phone: number, required
@@ -137,8 +148,6 @@ Schedule time: date
 ```
 Artist
 ```
-Email: string, required, unique
-Password: string, required
 Band name: string
 Genre: string, required, enum[‘Rock’, ‘Jazz’, ...]
 Social Media Links: link
@@ -149,6 +158,7 @@ Attendee
 Email: string, required, unique
 Password: string, required
 ```
+
 Request
 ```
 Host: ObjectId, ref: Host
