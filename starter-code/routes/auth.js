@@ -16,6 +16,7 @@ router.post('/signup', (req, res, next) => {
   const user = {
     email,
     password,
+    loggedIn: 'false',
     role: 'Attendee'
   };
   User.findOne({ email })
@@ -29,10 +30,11 @@ router.post('/signup', (req, res, next) => {
       User.create({
         email,
         password: hashedPassword,
-        role: 'Attendee'
+        role: 'Attendee',
+        loggedIn: 'false'
       })
         .then((newUser) => {
-          // req.session.currentUser = newUser;
+          req.session.currentUser = newUser;
           res.redirect('/');
         })
         .catch(next);
@@ -51,6 +53,7 @@ router.post('/signup-host', (req, res, next) => {
     email,
     password,
     role: 'Host',
+    loggedIn: 'false',
     host: {
       city,
       address,
@@ -70,6 +73,7 @@ router.post('/signup-host', (req, res, next) => {
         email,
         password: hashedPassword,
         role: 'Host',
+        loggedIn: 'false',
         host: {
           city,
           address,
@@ -78,7 +82,7 @@ router.post('/signup-host', (req, res, next) => {
         }
       })
         .then((newUser) => {
-          // req.session.currentUser = newUser;
+          req.session.currentUser = newUser;
           res.redirect('/');
         })
         .catch(next);
@@ -97,6 +101,7 @@ router.post('/signup-perform', (req, res, next) => {
   const user = {
     email,
     password,
+    loggedIn: 'false',
     role: 'Artist',
     artist: {
       bandName,
@@ -115,13 +120,14 @@ router.post('/signup-perform', (req, res, next) => {
         email,
         password: hashedPassword,
         role: 'Artist',
+        loggedIn: 'false',
         artist: {
           bandName,
           genre
         }
       })
         .then((newUser) => {
-          // req.session.currentUser = newUser;
+          req.session.currentUser = newUser;
           res.redirect('/');
         })
         .catch(next);
@@ -140,18 +146,20 @@ router.post('/login', (req, res, next) => {
     .then((user) => {
       if (!user) {
         // req.flash('Error', 'User name or password incorrect');
-        console.log('here');
         return res.redirect('/auth/login');
       }
       if (bcrypt.compareSync(password, user.password)) {
-        // req.session.currentUser = user;
+        req.session.currentUser = user;
         res.redirect('/');
       } else {
-        console.log('there');
         res.redirect('/auth/login');
       }
     })
     .catch(next);
 });
 
+router.post('/logout', (req, res, next) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
 module.exports = router;

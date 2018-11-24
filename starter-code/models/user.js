@@ -20,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     enum: ['Host', 'Artist', 'Attendee']
   },
+
   artist: artistSchema,
   host: hostSchema
 });
