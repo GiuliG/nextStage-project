@@ -103,12 +103,29 @@ router.post('/signup-perform', (req, res, next) => {
       genre
     }
   };
-  User.create(user)
+  User.findOne({ email })
     .then((user) => {
-      console.log('created user');
-      res.redirect('/');
-    }
-    )
+      if (user) {
+      // req.flash('Error', 'User already taken');
+        return res.redirect('/auth/signup-artist');
+      }
+      const salt = bcrypt.genSaltSync(saltRounds);
+      const hashedPassword = bcrypt.hashSync(password, salt);
+      User.create({
+        email,
+        password: hashedPassword,
+        role: 'Artist',
+        artist: {
+          bandName,
+          genre
+        }
+      })
+        .then((newUser) => {
+          // req.session.currentUser = newUser;
+          res.redirect('/');
+        })
+        .catch(next);
+    })
     .catch(next);
 });
 
