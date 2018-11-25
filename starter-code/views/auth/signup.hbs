@@ -3,7 +3,7 @@
 <form method="POST" action="/auth/signup">
  <div>
    <label>Email</label>
-   <input type="email" name="email" required/>
+   <input type="email" name="email" />
  </div>
 
  <div>
@@ -15,4 +15,12 @@
  <div class="field submit">
    <button type="submit">Signup</button>
  </div>
+ 
+
 </form>
+
+ {{#if messages.length}}
+<ul class="validation">
+  {{#each messages}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}

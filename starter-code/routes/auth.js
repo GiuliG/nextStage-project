@@ -4,34 +4,40 @@ const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const authMiddleware = require('../middleware/authmiddleware'); // Middleware
+const formMiddleware = require('../middleware/formmiddleware');
 
 // Get signup page for attendees
-router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+router.get('/signup', authMiddleware.requireAnon, (req, res, next) => {
+  const data = {
+    messages: req.flash('validationError')
+  };
+  res.render('auth/signup', data);
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
   const { email, password } = req.body;
 
   const user = {
     email,
     password,
-    loggedIn: 'false',
     role: 'Attendee'
   };
+  // Check if email exists
   User.findOne({ email })
     .then((user) => {
       if (user) {
-      // req.flash('Error', 'User already taken');
+        req.flash('validationError', 'email already exists');
         return res.redirect('/auth/signup');
       }
+      // if everything is fine (no empty fields & user not exists), encrypt password
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
+      // create new user in users collection
       User.create({
         email,
         password: hashedPassword,
-        role: 'Attendee',
-        loggedIn: 'false'
+        role: 'Attendee'
       })
         .then((newUser) => {
           req.session.currentUser = newUser;
@@ -43,17 +49,19 @@ router.post('/signup', (req, res, next) => {
 });
 
 // Get signup page for hosts
-router.get('/signup-host', (req, res, next) => {
-  res.render('auth/signup-host');
+router.get('/signup-host', authMiddleware.requireAnon, (req, res, next) => {
+  const data = {
+    messages: req.flash('validationError')
+  };
+  res.render('auth/signup-host', data);
 });
 
-router.post('/signup-host', (req, res, next) => {
+router.post('/signup-host', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
   const { email, password, city, address, phoneNumber, roomCapacity } = req.body;
   const user = {
     email,
     password,
     role: 'Host',
-    loggedIn: 'false',
     host: {
       city,
       address,
@@ -64,7 +72,7 @@ router.post('/signup-host', (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-      // req.flash('Error', 'User already taken');
+        req.flash('validationError', 'User already taken');
         return res.redirect('/auth/signup-host');
       }
       const salt = bcrypt.genSaltSync(saltRounds);
@@ -73,7 +81,6 @@ router.post('/signup-host', (req, res, next) => {
         email,
         password: hashedPassword,
         role: 'Host',
-        loggedIn: 'false',
         host: {
           city,
           address,
@@ -91,17 +98,19 @@ router.post('/signup-host', (req, res, next) => {
 });
 
 // Get signup page for performer
-router.get('/signup-perform', (req, res, next) => {
-  res.render('auth/signup-perform');
+router.get('/signup-perform', authMiddleware.requireAnon, (req, res, next) => {
+  const data = {
+    messages: req.flash('validationError')
+  };
+  res.render('auth/signup-perform', data);
 });
 
-router.post('/signup-perform', (req, res, next) => {
+router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
   const { email, password, bandName, genre } = req.body;
   console.log(req.body);
   const user = {
     email,
     password,
-    loggedIn: 'false',
     role: 'Artist',
     artist: {
       bandName,
@@ -111,7 +120,7 @@ router.post('/signup-perform', (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-      // req.flash('Error', 'User already taken');
+        req.flash('validationError', 'User already taken');
         return res.redirect('/auth/signup-artist');
       }
       const salt = bcrypt.genSaltSync(saltRounds);
@@ -120,7 +129,6 @@ router.post('/signup-perform', (req, res, next) => {
         email,
         password: hashedPassword,
         role: 'Artist',
-        loggedIn: 'false',
         artist: {
           bandName,
           genre
@@ -136,16 +144,19 @@ router.post('/signup-perform', (req, res, next) => {
 });
 
 // login form
-router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+router.get('/login', authMiddleware.requireAnon, (req, res, next) => {
+  const data = {
+    messages: req.flash('validationError')
+  };
+  res.render('auth/login', data);
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
   const { email, password } = req.body;
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        // req.flash('Error', 'User name or password incorrect');
+        req.flash('validationError', 'email or password incorrect');
         return res.redirect('/auth/login');
       }
       if (bcrypt.compareSync(password, user.password)) {
@@ -157,9 +168,10 @@ router.post('/login', (req, res, next) => {
     })
     .catch(next);
 });
-
-router.post('/logout', (req, res, next) => {
+/* dangerous button!
+router.post('/logout', authMiddleware.requireUser, (req, res, next) => {
   delete req.session.currentUser;
-  res.redirect('/');
+  res.redirect('/auth/login');
 });
+*/
 module.exports = router;
