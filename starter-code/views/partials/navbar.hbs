@@ -1,5 +1,13 @@
 <nav>
-  <ul>
+  <div class="logo"><a href="/"><img src="/images/Foto-logo-Nextstage.png" alt="LOGO"></a></div>
+
+<div class="bar-container" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
+
+  <ul class="menu">
 
     {{#unless currentUser}}
     <li><a href="/auth/signup">Sign up</a></li>
@@ -9,7 +17,7 @@
 
     {{else}}
     <li><a href="/">Home</a></li>
-    <li><a href="users/profiles/my-profile">My profile</a></li>
+    <li><a href="/users/profiles/my-profile">My profile</a></li>
     <li><a href="/">Events</a></li>
     <li><a href="/lists/host-list">Hosts List</a></li>
     
@@ -23,3 +31,4 @@
 
   </ul>
 </nav>
+
