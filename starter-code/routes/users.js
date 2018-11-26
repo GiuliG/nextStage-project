@@ -4,17 +4,18 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-/* GET users page.
-router.get('/profiles/host-profile', (req, res, next) => {
-  res.render('profiles/host-profile');
-}); */
+router.get('/profiles/my-profile', (req, res, next) => {
+  const { _id } = req.session.currentUser;
 
-router.get('/profiles/host-profile/:id', (req, res, next) => {
-  const id = req.params.id;
-  User.findById(id)
-    .then((result) => {
-      console.log(result);
-      res.render('profiles/host-profile', { users: result });
+  User.findById(_id)
+    .then((user) => {
+      if (user.role === 'Host') {
+        res.render('profiles/host-profile');
+      } else if (user.role === 'Attendee') {
+        res.render('profiles/attendee-profile');
+      } else if (user.role === 'Artist') {
+        res.render('profiles/artist-profile');
+      }
     })
     .catch(next);
 });

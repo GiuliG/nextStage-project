@@ -1,13 +1,24 @@
 <nav>
   <ul>
 
+    {{#unless currentUser}}
     <li><a href="/auth/signup">Sign up</a></li>
     <li><a href="/auth/login">Log in</a></li>
     <li><a href="/auth/signup-host">Host</a></li>
     <li><a href="/auth/signup-perform">Perform</a></li>
-    <!--
-    <li><form action="/auth/logout" method="POST">
-            <button type="submit">logout</button></li>
--->
+
+    {{else}}
+    <li><a href="/">Home</a></li>
+    <li><a href="users/profiles/my-profile">My profile</a></li>
+    <li><a href="/">Events</a></li>
+    
+  
+    <li>
+      <form action="/auth/logout" method="POST">
+        <button type="submit">logout</button>
+      </form>
+    </li>
+    {{/unless}}
+
   </ul>
 </nav>

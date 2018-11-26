@@ -168,10 +168,10 @@ router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFields, 
     })
     .catch(next);
 });
-/* dangerous button!
+
 router.post('/logout', authMiddleware.requireUser, (req, res, next) => {
   delete req.session.currentUser;
   res.redirect('/auth/login');
 });
-*/
+
 module.exports = router;
