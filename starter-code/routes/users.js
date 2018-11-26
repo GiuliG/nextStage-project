@@ -20,4 +20,16 @@ router.get('/profiles/my-profile', (req, res, next) => {
     .catch(next);
 });
 
+/*
+
+router.get('/users/:id', (req, res) => {
+  User.findById(req.params.id, (err, foundUser) => {
+    if (err) {
+      req.flash('error', 'Something went wrong.');
+      return res.redirect('/');
+    }
+    res.render('profiles/host-profile', { user: foundUser });
+  });
+ });
+*/
 module.exports = router;

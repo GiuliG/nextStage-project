@@ -12,6 +12,7 @@ const flash = require('connect-flash');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const listsRouter = require('./routes/lists');
 
 const hbs = require('hbs');
 
@@ -58,7 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-
+app.use('/lists', listsRouter);
 // -- 404 and error handler
 
 // NOTE: requires a views/not-found.ejs template
