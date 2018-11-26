@@ -15,7 +15,7 @@ router.get('/signup', authMiddleware.requireAnon, (req, res, next) => {
   res.render('auth/signup', data);
 });
 
-router.post('/signup', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
+router.post('/signup', authMiddleware.requireAnon, formMiddleware.requireFieldsAttendee, (req, res, next) => {
   const { email, password } = req.body;
 
   const user = {
@@ -56,7 +56,7 @@ router.get('/signup-host', authMiddleware.requireAnon, (req, res, next) => {
   res.render('auth/signup-host', data);
 });
 
-router.post('/signup-host', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
+router.post('/signup-host', authMiddleware.requireAnon, formMiddleware.requireFieldsHost, (req, res, next) => {
   const { email, password, city, address, phoneNumber, roomCapacity } = req.body;
   const user = {
     email,
@@ -105,7 +105,7 @@ router.get('/signup-perform', authMiddleware.requireAnon, (req, res, next) => {
   res.render('auth/signup-perform', data);
 });
 
-router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
+router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requireFieldsArtist, (req, res, next) => {
   const { email, password, bandName, genre } = req.body;
   console.log(req.body);
   const user = {
@@ -151,7 +151,7 @@ router.get('/login', authMiddleware.requireAnon, (req, res, next) => {
   res.render('auth/login', data);
 });
 
-router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFields, (req, res, next) => {
+router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFieldsAttendee, (req, res, next) => {
   const { email, password } = req.body;
   User.findOne({ email })
     .then((user) => {
@@ -163,6 +163,7 @@ router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFields, 
         req.session.currentUser = user;
         res.redirect('/');
       } else {
+        req.flash('validationError', 'email or password incorrect');
         res.redirect('/auth/login');
       }
     })
