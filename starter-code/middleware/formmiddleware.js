@@ -23,7 +23,7 @@ formMiddleware.requireFieldsHost = (req, res, next) => {
 };
 
 formMiddleware.requireFieldsArtist = (req, res, next) => {
-  const { email, password, bandNAme, genre } = req.body;
+  const { email, password, bandName, genre } = req.body;
 
   if (!email || !password || !bandName || !genre) {
     req.flash('validationError', 'Fields empty');

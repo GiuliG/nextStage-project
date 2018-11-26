@@ -17,4 +17,11 @@ authMiddleware.requireUser = (req, res, next) => {
   next();
 };
 
+authMiddleware.requireUserArtist = (req, res, next) => {
+  if (!req.session.currentUser || req.session.currentUser.role !== 'Artist') {
+    return res.redirect('/auth/login');
+  }
+  next();
+};
+
 module.exports = authMiddleware;
