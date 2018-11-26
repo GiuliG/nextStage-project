@@ -17,7 +17,6 @@ router.get('/host-list', authMiddleware.requireUserArtist, (req, res, next) => {
 router.post('/host-list/:id', (req, res, next) => {
   const hostId = req.params.id;
   const { _id, artist } = req.session.currentUser;
-  console.log(req.session.currentUser);
   const request = {
     hostId,
     artistId: _id,
@@ -31,5 +30,38 @@ router.post('/host-list/:id', (req, res, next) => {
     })
     .catch(next);
 });
+
+router.get('/requests-list', (req, res, next) => {
+  let isArtist = false;
+  let isHost = false;
+  if (req.session.currentUser.role === 'Artist') {
+    isArtist = true;
+  }
+  if (req.session.currentUser.role === 'Host') {
+    isHost = true;
+  }
+  User.find({ role: 'Host' })
+    .then((users) => {
+      const data = {
+        users,
+        isArtist,
+        isHost
+      };
+      res.render('lists/requests-list', data);
+    })
+    .catch(next);
+});
+
+/*
+
+router.get('/requests-list/:id', (req, res, next) => {
+  Request.findById(req.params.id)
+    .then((requests) => {
+      res.render('lists/requests-list', { requests });
+    })
+    .catch(next);
+});
+
+*/
 
 module.exports = router;
