@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Request = require('../models/request');
 
 router.get('/profiles/my-profile', (req, res, next) => {
   const { _id } = req.session.currentUser;

@@ -1,7 +1,12 @@
-<h1>Welcome to a artist Profile</h1>
+<h1>Welcome to Your Profile, {{currentUser.artist.bandName}}</h1>
 
 <section>
     <p>Email: {{currentUser.email}}</p>
     <p>Band name: {{currentUser.artist.bandName}}</p>
     <p>Genre: {{currentUser.artist.genre}}</p>
+</section>
+
+<section>
+  <a href="/lists/my-requests-list">See Your Requests</a>
+
 </section>
