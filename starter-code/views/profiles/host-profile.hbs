@@ -1,4 +1,6 @@
-<h1>Welcome to Your Profile:</h1>
+<section class="container">
+
+<h1 class="h1-profile">Welcome to Your Profile:</h1>
 <!--
 <form method="POST" action="/auth/login">
  <div>
@@ -19,14 +21,17 @@
 
 -->
 
-<section class="container">
-    <p>Email: {{currentUser.email}}</p>
-    <p>City: {{currentUser.host.city}}</p>
-    <p>Address: {{currentUser.host.address}}</p>
-    <p>Phone Number: {{currentUser.host.phoneNumber}}</p>
-    <p>Room Capacity: {{currentUser.host.roomCapacity}}</p>
+<section class="section-profile">
+    <p class="p-profile">Email: {{currentUser.email}}</p>
+    <p class="p-profile">City: {{currentUser.host.city}}</p>
+    <p class="p-profile">Address: {{currentUser.host.address}}</p>
+    <p class="p-profile">Phone Number: {{currentUser.host.phoneNumber}}</p>
+    <p class="p-profile">Room Capacity: {{currentUser.host.roomCapacity}}</p>
 </section>
 
-<section class="container">
-  <p>Choose availability: </p>
+<section class="section-profile">
+  <p class="p-profile">Choose availability: </p>
 </section>
+
+</section>
+

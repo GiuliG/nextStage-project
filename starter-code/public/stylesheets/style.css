@@ -362,3 +362,32 @@ form .submit button {
     margin-bottom: 50px;
   }
   */
+
+
+
+  /* ARTIST and HOST PROFILE */
+
+  .h1-profile {
+    font-size: 36px;
+    line-height: 50px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .p-profile {
+    margin: 0;
+    border: 15px solid #00A6FF;
+  }
+
+  .section-profile {
+    border: 3px solid #00A6FF;
+    border-radius: 10px;
+    margin: 20px;
+  }
+
+  .section-request {
+    padding-top: 30px;
+  }
+

@@ -1,12 +1,16 @@
-<h1>Welcome to Your Profile, {{currentUser.artist.bandName}}</h1>
+<section class="container">
 
-<section>
-    <p>Email: {{currentUser.email}}</p>
-    <p>Band name: {{currentUser.artist.bandName}}</p>
-    <p>Genre: {{currentUser.artist.genre}}</p>
+<h1 class="h1-profile">Welcome to Your Profile, {{currentUser.artist.bandName}}</h1>
+
+<section class="section-profile">
+    <p class="p-profile">Email: {{currentUser.email}}</p>
+    <p class="p-profile">Band name: {{currentUser.artist.bandName}}</p>
+    <p class="p-profile">Genre: {{currentUser.artist.genre}}</p>
 </section>
 
-<section>
+<section class="section-request">
   <a href="/lists/my-requests-list">See Your Requests</a>
 
 </section>
+</section>
+
