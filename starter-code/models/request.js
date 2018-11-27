@@ -2,27 +2,16 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const requestSchema = new Schema({
   hostId: {
-    type: String,
-    required: true,
-    unique: true
+    type: ObjectId,
+    ref: 'User'
   },
   artistId: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  bandName: {
-    type: String,
-    required: true
-  },
-  genre: {
-    type: String,
-    required: true,
-    enum: ['rock', 'jazz', 'hip-hop', 'pop', 'country', 'metal', 'classic', 'electronic', 'blues', 'rnb']
-
+    type: ObjectId,
+    ref: 'User'
   },
   status: {
     type: String,

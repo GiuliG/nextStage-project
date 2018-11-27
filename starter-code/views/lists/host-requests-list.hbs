@@ -1,0 +1,25 @@
+<section>
+  {{#each requests}}
+  <div>
+    <div><img src="" alt="Living Room"></div> 
+    <div>
+      <p>Email: {{this.artistId.email}}</p>
+      <p>Band Name: {{this.artistId.artist.bandName}}</p>
+      <p>Genre: {{this.artistId.artist.genre}}</p>
+      <p>status: {{this.status}}</p>
+    </div>
+    <form method="POST" action="/">
+      <div class="field submit">
+        <button type="submit">Accept</button>
+      </div>
+    </form>
+
+    <form method="POST" action="/">
+      <div class="field submit">
+        <button type="submit">Decline</button>
+      </div>
+    </form>
+  </div>
+  {{/each}}
+
+</section>
