@@ -8,7 +8,7 @@
       <p>Genre: {{this.artistId.artist.genre}}</p>
       <p>status: {{this.status}}</p>
     </div>
-    <form method="POST" action="/">
+    <form method="POST" action="/lists/{{this._id}}/accept">
       <div class="field submit">
         <button type="submit">Accept</button>
       </div>
