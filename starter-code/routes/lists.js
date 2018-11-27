@@ -53,7 +53,7 @@ router.get('/artist-requests-list', (req, res, next) => {
     .catch(next);
 });
 
-// we are retrieving artist info based on artist id but the host is the logged in one
+// we are retrieving the artist info based on artist id but the host is logged in
 router.get('/my-requests', (req, res, next) => {
   const { _id } = req.session.currentUser;
   Request.find({ hostId: _id })
@@ -64,4 +64,17 @@ router.get('/my-requests', (req, res, next) => {
     })
     .catch(next);
 });
+
+// we are retrieving host info based on host id but the art is logged in
+router.get('/my-requests-list', (req, res, next) => {
+  const { _id } = req.session.currentUser;
+  Request.find({ artistId: _id })
+    .populate('hostId')
+    .then((result) => {
+      console.log(result);
+      res.render('lists/artist-requests-list', { requests: result });
+    })
+    .catch(next);
+});
+
 module.exports = router;
