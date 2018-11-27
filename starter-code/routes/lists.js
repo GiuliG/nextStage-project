@@ -53,7 +53,6 @@ router.get('/requests-list', (req, res, next) => {
 });
 
 /*
-
 router.get('/requests-list/:id', (req, res, next) => {
   Request.findById(req.params.id)
     .then((requests) => {
@@ -61,7 +60,6 @@ router.get('/requests-list/:id', (req, res, next) => {
     })
     .catch(next);
 });
-
 */
 
 module.exports = router;
