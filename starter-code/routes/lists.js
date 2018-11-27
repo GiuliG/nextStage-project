@@ -16,10 +16,11 @@ router.get('/host-list', authMiddleware.requireUserArtist, (req, res, next) => {
 
 router.post('/host-list/:id', (req, res, next) => {
   const hostId = req.params.id;
-  const { _id, artist } = req.session.currentUser;
+  const { _id, email, artist } = req.session.currentUser;
   const request = {
     hostId,
     artistId: _id,
+    artistEmail: email,
     bandName: artist.bandName,
     genre: artist.genre,
     status: 'pending'
@@ -31,7 +32,7 @@ router.post('/host-list/:id', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/requests-list', (req, res, next) => {
+router.get('/artist-requests-list', (req, res, next) => {
   let isArtist = false;
   let isHost = false;
   if (req.session.currentUser.role === 'Artist') {
@@ -47,21 +48,44 @@ router.get('/requests-list', (req, res, next) => {
         isArtist,
         isHost
       };
-      res.render('lists/requests-list', data);
+      res.render('lists/artist-requests-list', data);
     })
     .catch(next);
 });
 
-/*
-
-router.get('/requests-list/:id', (req, res, next) => {
-  Request.findById(req.params.id)
-    .then((requests) => {
-      res.render('lists/requests-list', { requests });
+// we are retrieving the artist info based on artist id but the host is logged in
+router.get('/my-requests', (req, res, next) => {
+  const { _id } = req.session.currentUser;
+  Request.find({ hostId: _id })
+    .populate('artistId')
+    .then((result) => {
+      console.log(result);
+      res.render('lists/host-requests-list', { requests: result });
     })
     .catch(next);
 });
 
-*/
+// we are retrieving host info based on host id but the art is logged in
+router.get('/my-requests-list', (req, res, next) => {
+  const { _id } = req.session.currentUser;
+  Request.find({ artistId: _id })
+    .populate('hostId')
+    .then((result) => {
+      console.log(result);
+      res.render('lists/artist-requests-list', { requests: result });
+    })
+    .catch(next);
+});
+
+router.post('/:id/accept', (req, res, next) => {
+  const id = req.params.id;
+  console.log('yei');
+  Request.findByIdAndUpdate(id, { status: 'accepted' }, { new: true })
+    .then((result) => {
+      console.log(result);
+      res.redirect('/lists/my-requests');
+    })
+    .catch(next);
+});
 
 module.exports = router;

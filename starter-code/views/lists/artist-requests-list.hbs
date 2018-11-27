@@ -1,0 +1,15 @@
+<section>
+  <h2>Your Requests:</h2>
+{{#each requests}}
+  <div>
+      <div>
+        <p>Host Email: {{this.hostId.email}}</p>
+        <p>Room Capacity: {{this.hostId.host.roomCapacity}}</p>
+        <p>Date: {{this.hostId.host.scheduleTime}}</p>
+      </div>
+      <div>
+        <p>Status:{{this.status}} </p>
+      </div>
+  </div>
+    {{/each}}
+</section>
