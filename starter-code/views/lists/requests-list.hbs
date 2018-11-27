@@ -1,0 +1,32 @@
+<section>
+  <h2>Your Requests</h2>
+
+  <div>
+    {{#if isArtist}}
+    <div>
+      <p>Band Name/Artist Name:</p>
+      <p>Genre:</p>
+      <p>Email:</p>
+    </div>
+    <div>
+      <p>Status: </p>
+    </div>
+    {{/if}}
+    {{#if isHost}}
+    <div>
+      <p>Band Name/Artist Name: {{this.bandName}}</p>
+      <p>Genre: {{this.genre}}</p>
+      <p>Email: {{currentUser.email}}</p>
+    </div>
+    <div>
+      <p>Status: {{this.status}} </p>
+    </div>
+    <form action="/" method="POST">
+      <button type="submit">Accept</button>
+    </form>
+    <form action="/" method="POST">
+      <button type="submit">Decline</button>
+    </form>
+    {{/if}}
+  </div>
+</section>

@@ -1,12 +1,8 @@
-// Band name: string
-// Genre: string, required, enum[‘Rock’, ‘Jazz’, ...]
-// Social Media Links: link
-// Attendee
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const artistSchema = new Schema({
   bandName: {
     type: String
   },
@@ -18,4 +14,4 @@ const userSchema = new Schema({
   socialMediaLink: String
 });
 
-module.exports = userSchema;
+module.exports = artistSchema;
