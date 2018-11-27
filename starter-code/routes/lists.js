@@ -65,7 +65,7 @@ router.get('/my-requests', (req, res, next) => {
     .catch(next);
 });
 
-// we are retrieving host info based on host id but the art is logged in
+// we are retrieving host info based on host id but the artist is logged in
 router.get('/my-requests-list', (req, res, next) => {
   const { _id } = req.session.currentUser;
   Request.find({ artistId: _id })

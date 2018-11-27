@@ -1,43 +1,62 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
 
-<div>
-    <h2>Find live show in Barcelona</h2>
-    <button type="submit">See events</button>
+
+
+<div class="header-block">
+    <div class="container">
+        <h1><strong>Find live shows in <span class="typed-string"></span></strong></h1>
+        <h2>Enjoy performances around the world</h2>
+    </div>
+            <div>
+                <a href="">SEE EVENTS</a>
+            </div>
 </div>
-
-<div>
-    <h2>How it works</h2>
-    <p>We hold intimate gigs in unique places, like somone's living room or vintage shop</p>
-
+<section class="container">
     <div>
+        <h2>How it works</h2>
+        <p>We hold intimate gigs in unique places, like somone's living room or vintage shop</p>
+
         <div>
-            <h4>1.- Get tickets it's free! Select location, date and genre</h4>
-            <p>You won't know the name of the artist until the day of the event.</p>
-        </div>
-        <div>
-            <h4>2.- Discover the performer.</h4>
-            <p>The day before you will recive an email with the name of the performer.</p>
-        </div>
-        <div>
-            <h4>Enjoy live shows!</h4>
-            <p>Come to the event, bring some food, drinks and enjoy a great show.</p>
+            <div>
+                <h4>1. Get Your Tickets for Free </h4>
+                <p>Select location, date and genre. You won't know the name of the artist until the day of the event.</p>
+            </div>
+            <div>
+                <h4>2.Discover the Performer.</h4>
+                <p>The day before you will recive an email with the name of the performer.</p>
+            </div>
+            <div>
+                <h4>3. Enjoy Live Shows</h4>
+                <p>Come to the event, bring some food and drinks and enjoy a great show.</p>
+            </div>
         </div>
     </div>
-</div>
-
-<div>
-    <h2>Upcoming Events</h2>
-    <div>
-        <h4>Show in London</h4>
-        <p>Date and time:</p>
-        <p>Tickets available:</p>
-    </div>
-
-    <div>
-        <h4>Show in Rome</h4>
-        <p>Date and time:</p>
-        <p>Tickets available:</p>
-    </div>
-    
-</div>
+</section>
+<section class="container">
+   <article>
+        <h2>Upcoming Events</h2>
+        <div>
+            <h4>Show in Barcelona</h4>
+            <p>Date and time:</p>
+            <p>Tickets available:</p>
+            <p>genre:</p>
+        </div>
+    </article>
+    <article>
+        <div>
+            <h4>Show in Madrid</h4>
+            <p>Date and time:</p>
+            <p>Tickets available:</p>
+            <p>genre:</p>
+        </div>
+    </article>
+  
+</section>
+<script>
+  var typed = new Typed('.typed-string', {
+    strings: ["Barcelona","Madrid", "London", "Paris"],
+    typeSpeed: 100,
+    backspeed: 40,
+    backDelay: 1000,
+    loop: true
+  });
+</script>
