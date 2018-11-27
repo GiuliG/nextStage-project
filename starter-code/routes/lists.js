@@ -87,5 +87,17 @@ router.post('/:id/accept', (req, res, next) => {
     })
     .catch(next);
 });
+/*
+router.post('/:id/decline', (req, res, next) => {
+  const id = req.params.id;
+  console.log('yei');
+  Request.findByIdAndUpdate(id, { status: 'accepted' }, { new: true })
+    .then((result) => {
+      console.log(result);
+      res.redirect('/lists/my-requests');
+    })
+    .catch(next);
+});
+*/
 
 module.exports = router;
