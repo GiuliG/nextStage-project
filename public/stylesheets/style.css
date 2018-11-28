@@ -49,6 +49,12 @@ ul{
   padding-left: 0;
 }
 
+.signup-link {
+  color: rgb(245, 239, 239);
+  font-size: 200%;
+}
+
+
 
 /* ---- layout ---- */
 
@@ -81,8 +87,13 @@ ul{
   width: 80%;
   padding: 20px 20px;
   display: block;
+<<<<<<< HEAD
+  background-color:  #F8F9F9;
+  margin: auto;
+=======
   background-color:  #00A6FF;
   margin: 20px 10px 0 10px;
+>>>>>>> 14b264e8ab95c1518cf5f541cdde2ff643894605
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -102,7 +113,7 @@ ul{
 }
 
 .container {
-  margin: 0 10px 0 10px;
+  margin: auto;
   width:90%;
   text-align: center;
 }
@@ -129,6 +140,20 @@ main{
 .section-profile {
   width: 50%;
 }
+}
+
+.signup-link {
+  margin: 20% 0;
+}
+
+.signup-div {
+  text-align: center;
+  margin: auto;
+}
+
+.auto-type{
+  width: 91%;
+  margin: 10% auto;
 }
 
 /* ---- components ---- */
@@ -164,15 +189,11 @@ nav ul{
   justify-content: flex-end;
 }
 
-nav ul li{
-  margin-right: 20px;
-}
-
 nav img{
   float: left;
   align-content:center;
-  width: 140px;
-  height: 35px;
+  width: 40%;
+  height: 80%;
 }
 
 /* BURGER MENU */
@@ -399,5 +420,11 @@ form .submit button {
 
   .section-request {
     padding-top: 30px;
+  }
+
+  /*----buttons---*/
+
+  .see-events-button {
+    font-size: 120%;
   }
 
