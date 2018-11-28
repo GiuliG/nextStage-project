@@ -173,6 +173,18 @@ hr {
   width: 95%;
 }
 
+.icons-layout {
+  width: 50%;
+}
+
+.stage-image {
+  margin-top: 40px;
+}
+
+.ticket-image {
+  margin-top: 20px;
+}
+
 
 /* ---- components ---- */
 header {
