@@ -10,23 +10,27 @@
   <ul class="menu">
 
     {{#unless currentUser}}
-    <li><a href="/auth/signup">Sign up</a></li> 
-    <li><a href="/auth/signup-host">Host</a></li>
-    <li><a href="/auth/signup-perform">Perform</a></li>
-    <li><a href="/auth/login">Log in</a></li>
+    <div class="signup-div">
+      <li><a class="signup-link" href="/auth/signup">Sign up</a></li> 
+      <li><a class="signup-link" href="/auth/signup-host">Host</a></li>
+      <li><a class="signup-link" href="/auth/signup-perform">Perform</a></li>
+      <li><a class="signup-link" href="/auth/login">Log in</a></li>
+    </div>
     
     {{else}}
-    <li><a href="/">Home</a></li>
-    <li><a href="/users/profiles/my-profile">My profile</a></li>
-    <li><a href="/">Events</a></li>
-    <li><a href="/lists/host-list">Hosts List</a></li>
+    <div>
+      <li><a class="signup-link" href="/">Home</a></li>
+      <li><a class="signup-link" href="/users/profiles/my-profile">My profile</a></li>
+      <li><a class="signup-link" href="/">Events</a></li>
+      <li><a class="signup-link" href="/lists/host-list">Hosts List</a></li>
+      
     
-  
-    <li>
-      <form action="/auth/logout" method="POST">
-        <button type="submit">logout</button>
-      </form>
-    </li>
+      <li>
+        <form action="/auth/logout" method="POST">
+          <button class="logout-button" type="submit">logout</button>
+        </form>
+      </li>
+    </div>
     {{/unless}}
 
   </ul>
