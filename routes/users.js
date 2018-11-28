@@ -21,6 +21,17 @@ router.get('/profiles/my-profile', (req, res, next) => {
     .catch(next);
 });
 
+router.post('/profiles/my-profile', (req, res, next) => {
+  const { pickadate } = req.body;
+  const userId = req.session.currentUser._id;
+
+  User.findByIdAndUpdate(userId, { $set: { 'host.scheduleTime': pickadate } }, { new: true })
+    .then((result) => {
+      console.log(result);
+      return res.redirect('/users/profiles/my-profile');
+    })
+    .catch(next);
+});
 /*
 
 router.get('/users/:id', (req, res) => {

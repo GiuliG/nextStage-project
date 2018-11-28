@@ -30,12 +30,17 @@
       <p class="p-profile">Room Capacity: {{currentUser.host.roomCapacity}}</p>
   </section>
 
-  <section class="section-profile">
-    <label for="start">When do you want to host the event?</label>
-    <input type="date" id="start" name="trip-start"
-          value="2018-07-22"
-          min="2018-01-01" max="2020-12-31">
-  </section>
+  
+ <form method="POST" action="">   
+    <section class="section-profile">
+        <label for="start">When do you want to host the event?</label>
+        <input type="date" id="start" name="pickadate"
+              value="2018-07-22"
+              min="2018-01-01" max="2020-12-31">
+      </section>
+      <button type="submit">Submit</button>
+ </form>
+  
   <a href="/lists/my-requests">My Requests</a>
 </section>
 

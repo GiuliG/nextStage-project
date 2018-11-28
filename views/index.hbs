@@ -40,21 +40,23 @@
 <section class="container" style="padding-bottom:100px">
   
         <h2 id="events">Upcoming Events</h2>
-    {{#each events}}
-    <article class="upcoming-events-card">
-        <img>
-        <h4 class="event-title">Show in {{this.hostId.host.city}}</h4>
-        <p>Date and time:</p>
-        <p>Address: {{this.hostId.host.address}}</p>
-        <p>Tickets available: {{this.avalible}}</p>
-        <p>Genre: {{this.artisId.artist.genre}}</p>
-        {{#unless this.isAttending}}
-        <form method="POST" action="/events/{{this._id}}/attend">
-            <button class="attend-button" type="submit">Attend</button>
-        </form>
-        {{else}}
-        <p><strong>Already registered</strong></p>
-        {{/unless}}
+        {{#each events}}
+         <article>
+        <div>
+            <img>
+            <h4>Show in {{this.hostId.host.city}}</h4>
+            <p>Date and time: {{this.hostId.host.scheduleTime}}</p>
+             <p>Address: {{this.hostId.host.address}}</p>
+            <p>Tickets available: {{this.avalible}}</p>
+            <p>Genre: {{this.artistId.artist.genre}}</p>
+            {{#unless this.isAttending}}
+             <form method="POST" action="/events/{{this._id}}/attend">
+                <button class="attend-button" type="submit">Attend</button>
+             </form>
+             {{else}}
+             <p><strong>Already registered</strong></p>
+             {{/unless}}
+        </div>
     </article>
     {{/each}}
   
