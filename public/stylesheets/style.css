@@ -209,6 +209,15 @@ hr {
   margin: 0 auto;
 }
 
+.attend-button {
+  background-color: #00A6FF;
+  border: none;
+  border-radius: 15px 2px 15px 2px;
+  width: 30%;
+  height: 25px;
+  margin: 5% 0;
+}
+
 
 /* ---- components ---- */
 header {
