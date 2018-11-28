@@ -185,6 +185,30 @@ hr {
   margin-top: 20px;
 }
 
+.attendee-events {
+  border: 1px solid #343a40;
+}
+
+.host-list-card {
+  text-align: center;
+  width: 90%;
+  margin: 10% auto;
+  box-shadow: 0 0 48px -8px;
+}
+
+.host-list-section {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.upcoming-events-card {
+  box-shadow: 0 0 48px -8px;
+}
+
+.event-title {
+  margin: 0 auto;
+}
+
 
 /* ---- components ---- */
 header {
@@ -365,7 +389,8 @@ form .submit button {
   font-size: 18px;
   background-color: #00A6FF; /* #58A4B0;  /* #27afdc; */
   cursor: pointer;
-  border-radius: 10px 4px 10px 4px;
+  border-radius: 20px 4px 20px 4px;
+  border: none;
 }
 
 .logout-button {
