@@ -1,37 +1,40 @@
 <section class="container">
 
-<h1 class="h1-profile">Welcome to Your Profile:</h1>
+  <h1 class="h1-profile"><strong>Your Host Profile</strong></h1>
 <!--
-<form method="POST" action="/auth/login">
- <div>
-   <label>City</label>
-   <input type="email" name="email"/>
- </div>
+  <form method="POST" action="/auth/login">
+  <div>
+    <label>City</label>
+    <input type="email" name="email"/>
+  </div>
 
- <div>
-   <label>Password</label>
-   <input type="password" name="password"/>
- </div>
+  <div>
+    <label>Password</label>
+    <input type="password" name="password"/>
+  </div>
 
 
- <div class="field submit">
-   <button type="submit">Login</button>
- </div>
-</form>
+  <div class="field submit">
+    <button type="submit">Login</button>
+  </div>
+  </form>
 
 -->
 
-<section class="section-profile">
-    <p class="p-profile">Email: {{currentUser.email}}</p>
-    <p class="p-profile">City: {{currentUser.host.city}}</p>
-    <p class="p-profile">Address: {{currentUser.host.address}}</p>
-    <p class="p-profile">Phone Number: {{currentUser.host.phoneNumber}}</p>
-    <p class="p-profile">Room Capacity: {{currentUser.host.roomCapacity}}</p>
-</section>
+  <section class="section-profile">
 
-<section class="section-profile">
-  <p class="p-profile">Choose availability: </p>
-</section>
+      <p class="p-profile">Email: {{currentUser.email}}</p>
+      <p class="p-profile">City: {{currentUser.host.city}}</p>
+      <p class="p-profile">Address: {{currentUser.host.address}}</p>
+      <p class="p-profile">Phone Number: {{currentUser.host.phoneNumber}}</p>
+      <p class="p-profile">Room Capacity: {{currentUser.host.roomCapacity}}</p>
+  </section>
 
+  <section class="section-profile">
+    <label for="start">When do you want to host the event?</label>
+    <input type="date" id="start" name="trip-start"
+          value="2018-07-22"
+          min="2018-01-01" max="2020-12-31">
+  </section>
 </section>
 
