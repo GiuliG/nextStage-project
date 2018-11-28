@@ -1,7 +1,8 @@
-<section>
-  <h2>Your Requests:</h2>
+<section class="section-height request-section-layout">
+  <h2>Your Requests</h2>
+  <hr class= "hr-your-requests">
   {{#each requests}}
-  <div>
+  <div class="requests-card">
     <div><img src="" alt="Living Room"></div> 
     <div>
       <p>Email: {{this.artistId.email}}</p>
@@ -21,6 +22,7 @@
       </div>
     </form>
   </div>
+  <hr class= "hr-your-requests">
   {{/each}}
 
 </section>

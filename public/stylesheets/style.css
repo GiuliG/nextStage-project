@@ -218,6 +218,19 @@ hr {
   margin: 5% 0;
 }
 
+.request-section-layout {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hr-your-requests {
+  margin: 5% auto;
+}
+
+.requests-card {
+  box-shadow: 0 0 48px -8px;
+}
+
 
 /* ---- components ---- */
 header {
