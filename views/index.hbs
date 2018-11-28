@@ -7,7 +7,7 @@
         <h2>Enjoy performances around the world</h2>
     </div>
             <div>
-                <a class="see-events-button" href="">SEE EVENTS</a>
+                <a class="see-events-button" href="#events">SEE EVENTS</a>
             </div>
 </div>
 <section class="container">
@@ -31,9 +31,9 @@
         </div>
     </div>
 </section>
-<section class="container">
+<section class="container" style="padding-bottom:100px">
   
-        <h2>Upcoming Events</h2>
+        <h2 id="events">Upcoming Events</h2>
         {{#each events}}
          <article>
         <div>
@@ -41,9 +41,15 @@
             <h4>Show in {{this.hostId.host.city}}</h4>
             <p>Date and time:</p>
              <p>Address: {{this.hostId.host.address}}</p>
-            <p>Tickets available: {{this.hostId.host.roomCapacity}}</p>
+            <p>Tickets available: {{this.avalible}}</p>
             <p>Genre: {{this.artisId.artist.genre}}</p>
-             <form method="POST" action="/events/{{this._id}}/attend">attend</form>
+            {{#unless this.isAttending}}
+             <form method="POST" action="/events/{{this._id}}/attend">
+                <button type="submit">Attend</button>
+             </form>
+             {{else}}
+             <p><strong>Already registered</strong></p>
+             {{/unless}}
         </div>
     </article>
     {{/each}}
