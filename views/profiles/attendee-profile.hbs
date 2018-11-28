@@ -1,15 +1,11 @@
-<h1>Welcome to Your Profle</h1>
 
-    <p>Email: {{currentUser.email}}</p>
+<section class="section-height attendee-profile">
+    <h1>Welcome to Your Profle</h1>
+    <h2>Your Upcoming Events:</h2>
+    {{#each events}}
+    <article>
+        <p>Location: {{this.hostId.host.city}}</p>
+        <p>Date:</p>
+    </article>
+    {{/each}}
 </section>
-
-<section>
-    <h1>Your Upcoming Events:</h1>
-
-</section>
-{{#each events}}
-<article>
-    <p>Location: {{this.hostId.host.city}}</p>
-    <p>Date:</p>
-</article>
-{{/each}}
