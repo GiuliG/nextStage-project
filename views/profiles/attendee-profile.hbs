@@ -1,16 +1,19 @@
-<h1>Welcome to Your Profle</h1>
-
 <section>
-    <p>Email: {{currentUser.email}}</p>
-</section>
+    <h1>Welcome to Your Profle</h1>
 
-<section>
-    <h1>Your Upcoming Events:</h1>
+    <section>
+        <p>Email: {{currentUser.email}}</p>
+    </section>
+
+    <section>
+        <h3>Your Upcoming Events:</h3>
+    </section>
+
+    {{#each events}}
+    <article>
+        <p>Location: {{this.hostId.host.city}}</p>
+        <p>Date:</p>
+    </article>
+    {{/each}}
 
 </section>
-{{#each events}}
-<article>
-    <p>Location: {{this.hostId.host.city}}</p>
-    <p>Date:</p>
-</article>
-{{/each}}
