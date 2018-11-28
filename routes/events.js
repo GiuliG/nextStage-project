@@ -22,20 +22,6 @@ router.post('/:requestId', (req, res, next) => {
         })
         .catch(next);
     })
-
-  // update the status of the request with this id copy from the other route
-  /*    .then((request) => {
-      const event = {
-        hostId,
-        artistId,
-        requestId: id
-      };
-      Event.create(event)
-        .then((newEvent) => {
-          res.redirect('/');
-        })
-        .catch(next);
-    }) */
     .catch(next);
 });
 
