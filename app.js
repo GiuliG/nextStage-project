@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
@@ -13,12 +14,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const listsRouter = require('./routes/lists');
-
+const eventsRouter = require('./routes/events');
 const hbs = require('hbs');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/nextstage', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
@@ -60,6 +61,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/lists', listsRouter);
+app.use('/events', eventsRouter);
+
 // -- 404 and error handler
 
 // NOTE: requires a views/not-found.ejs template
