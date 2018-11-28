@@ -18,9 +18,9 @@ body {
   padding-top: 6%;
   font-family: 'Roboto', Arial, sans-serif;
   /*font-family: 'Open Sans', sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-  font-size: 16px;
+  font-size: 110%;
   font-weight: 400;
-  line-height: 147%;
+  line-height: 150%;
   color: #343a40;
 }
 
@@ -36,9 +36,9 @@ h2 {
   font-size: 24px;
 }
 
-
-
-h3 {}
+h4 {
+  font-size: 120%;
+}
 
 p {
   margin: 0;
@@ -80,20 +80,15 @@ ul{
 }
 
 .header-block a {
-  color: #F8F9F9;
+  color: rgb(10, 10, 10);
   text-decoration: none;
   cursor: pointer;
   border-radius: 10px 4px 10px 4px;
-  width: 80%;
+  width: 60%;
   padding: 20px 20px;
   display: block;
-<<<<<<< HEAD
   background-color:  #F8F9F9;
   margin: auto;
-=======
-  background-color:  #00A6FF;
-  margin: 20px 10px 0 10px;
->>>>>>> 14b264e8ab95c1518cf5f541cdde2ff643894605
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -113,7 +108,7 @@ ul{
 }
 
 .container {
-  margin: auto;
+  margin: 17% auto;
   width:90%;
   text-align: center;
 }
@@ -156,6 +151,12 @@ main{
   margin: 10% auto;
 }
 
+
+hr {
+  border: 0.5px solid rgba(52, 58, 64, 0.5);
+  width: 60%;
+  margin: 10% auto;
+}
 /* ---- components ---- */
 header {
   background-color: white;
@@ -169,19 +170,16 @@ nav{
   position: fixed;
   top: 0;
   width: 100%;
-  background: white;
-  color: black;
+  background:white;
   grid-column-start: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 1.5%;
 }
 nav a{
-  color: black;
   text-decoration:none; 
   display: inline-block;
-  /* padding-bottom: 25px; */
 }
 
 nav ul{
@@ -194,6 +192,7 @@ nav img{
   align-content:center;
   width: 40%;
   height: 80%;
+  margin-left: 3%;
 }
 
 /* BURGER MENU */
@@ -202,7 +201,7 @@ nav img{
 .bar-container {
   display: inline-block;
   cursor: pointer;
-  margin-right: 20px;
+  margin-right: 4%;
   z-index: 1;
 }
 
@@ -245,7 +244,7 @@ nav img{
   right: 0;
   /* background-color: white; */
   background: #00A6FF;
-  opacity: 0.90;
+  opacity: 0.95;
   width: 100%;
   /* padding: 148px; */
   height: 100vh;
@@ -308,8 +307,7 @@ form .field.has-error input {
   font-family: 'Open Sans', sans-serif;
   /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   font-size: 18px;
-  border-top: 1px solid rgb(170, 168, 168);
-  position: fixed;
+  border-top: 1px solid rgb(170, 168, 168); 
   width: 100vw;
   bottom: 0;
   text-align: center;
