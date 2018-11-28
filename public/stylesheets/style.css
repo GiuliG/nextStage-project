@@ -80,25 +80,26 @@ ul{
 }
 
 .header-block a {
-  color: rgb(10, 10, 10);
+  color: #F8F9F9;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 10px 4px 10px 4px;
+  border-radius: 40px 4px 40px 4px;
   width: 60%;
   padding: 20px 20px;
   display: block;
-  background-color:  #F8F9F9;
+  background-color:  #00A6FF;
   margin: auto;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+  border: none;
 }
 #site-header {
   padding: 30px 0;
 }
 
 #site-footer {
-  color: white;
+  color: #F8F9F9;
   padding: 60px 0;
   background: #111;
 }
@@ -138,7 +139,7 @@ main{
 }
 
 .signup-link {
-  margin: 20% 0;
+  margin: 10% auto;
 }
 
 .signup-div {
@@ -157,9 +158,25 @@ hr {
   width: 60%;
   margin: 10% auto;
 }
+
+.section-height {
+  min-height: 100vh;
+  padding-top: 15px;
+}
+
+.logo-nav {
+  width: 35%;
+}
+
+.attendee-profile {
+  text-align: center;
+  width: 95%;
+}
+
+
 /* ---- components ---- */
 header {
-  background-color: white;
+  background-color:#F8F9F9;;
   border-bottom: 1px solid rgb(170, 168, 168);
   position: fixed;
   width: 100vw;
@@ -170,12 +187,16 @@ nav{
   position: fixed;
   top: 0;
   width: 100%;
-  background:white;
+  background:#343a40;
   grid-column-start: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5%;
+}
+
+.logo-link {
+  display: flex;
 }
 nav a{
   text-decoration:none; 
@@ -188,11 +209,8 @@ nav ul{
 }
 
 nav img{
-  float: left;
-  align-content:center;
-  width: 40%;
-  height: 80%;
-  margin-left: 3%;
+  width: 100%;
+  height: 100%;
 }
 
 /* BURGER MENU */
@@ -208,7 +226,7 @@ nav img{
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: #F8F9F9;
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -242,16 +260,14 @@ nav img{
   top: -26px;
   justify-content: center;
   right: 0;
-  /* background-color: white; */
   background: #00A6FF;
   opacity: 0.95;
   width: 100%;
-  /* padding: 148px; */
   height: 100vh;
-  /* padding-bottom: 665px; */
   transition: all 1.4s;
   font-size: 19px;
   z-index: 0;
+  text-align: center;
 }
 
 
@@ -319,35 +335,9 @@ form .field.has-error input {
 
 /* ---- LOGIN ---- */
 
-/* -- BUTTON 1 -- */
 
-/*
-.button {
-  border: 4px solid #226fbe;
-  border-radius: 15px;
-  transition: 0.3s;
-  font-family: inherit;
-  font-size: inherit;
-  color: blue;
-  background: yellow;
-  cursor: pointer;
-  padding: 25px 80px;
-  display: inline-block;
-  margin: 15px 30px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  outline: none;
-  position: relative;
-}
 
-.button:hover {
-background-color: #f5f5f5da;
-color:  #226fbe;
-}
-*/
-
-/* -- BUTTON 2 -- */
+/* -- BUTTONS -- */
 
 
 .button {
@@ -366,28 +356,14 @@ form .submit button {
   border-radius: 10px 4px 10px 4px;
 }
 
-/*
-.button-alt {
-  color: blue;
-  background-color: #fff;
+.logout-button {
+  border: none;
+  background-color: rgba(0,166,255, 0.05);
+  color: rgb(245, 239, 239);
+  font-size: 200%;
+  padding: 0;
+  margin-top: 30%;
 }
-*/
-
-/* .credentials-input,
-  .login-btn,
-  .signup-btn,
-  .service-added-btn,
-  .back-home-btn,
-  .go-back-btn {
-    font-size: inherit;
-    font-family: inherit;
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 50px;
-  }
-  */
-
 
 
   /* ARTIST and HOST PROFILE */
