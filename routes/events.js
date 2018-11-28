@@ -7,14 +7,23 @@ const Request = require('../models/request');
 
 router.post('/:requestId', (req, res, next) => {
   const requestId = req.params.requestId;
-  const { _id, artist, request } = req.session.currentUser;
+  const hostId = req.session.currentUser._id;
   Request.findByIdAndUpdate(requestId, { status: 'accepted' }, { new: true })
     .then((result) => {
       console.log(result);
-
-      res.redirect('/lists/my-requests');
+      const newEvent = new Event({
+        hostId,
+        artistId: result.artistId._id,
+        requestId
+      });
+      newEvent.save()
+        .then(() => {
+          res.redirect('/lists/my-requests');
+        })
+        .catch(next);
     })
-    // update the status of the request with this id copy from the other route
+
+  // update the status of the request with this id copy from the other route
   /*    .then((request) => {
       const event = {
         hostId,
@@ -29,3 +38,5 @@ router.post('/:requestId', (req, res, next) => {
     }) */
     .catch(next);
 });
+
+module.exports = router;

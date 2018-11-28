@@ -14,7 +14,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const listsRouter = require('./routes/lists');
-
+const eventsRouter = require('./routes/events');
 const hbs = require('hbs');
 
 const app = express();
@@ -61,6 +61,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/lists', listsRouter);
+app.use('/events', eventsRouter);
+
 // -- 404 and error handler
 
 // NOTE: requires a views/not-found.ejs template

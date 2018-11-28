@@ -64,8 +64,10 @@
                 <p>Address: Carrer de Sant Pere Mitjà, 48, 08001</p>
                 <p>Tickets available: 21</p>
                 <p>Genre: Rock</p>
-             <a href="">Attend</a>
-        </div>
+                        <form action="/events/{{this._id}}/attend" method="POST">
+                            <button type="submit">Attend</button>
+                        </form>
+         </div>
     </article>
 
     <article>
