@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "nodemon",
             "runtimeExecutable": "nodemon",
-            "program": "${workspaceFolder}/www/bin",
+            "program": "${workspaceFolder}/bin/www",
             "restart": true,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"

@@ -7,7 +7,7 @@
         <h2>Enjoy performances around the world</h2>
     </div>
             <div>
-                <a class="see-events-button" href="">SEE EVENTS</a>
+                <a class="see-events-button" href="#events">SEE EVENTS</a>
             </div>
 </div>
 <section class="container">
@@ -34,56 +34,28 @@
         </div>
     </div>
 </section>
-<section class="container">
+<section class="container" style="padding-bottom:100px">
   
-        <h2>Upcoming Events</h2>
+        <h2 id="events">Upcoming Events</h2>
+        {{#each events}}
          <article>
         <div>
             <img>
-            <h4>Show in Barcelona</h4>
-            <p>Date and time: Dec 12 2018, 9:00 pm </p>
-             <p>Address: Carrer de Sant Pere Mitjà, 48, 08001</p>
-            <p>Tickets available: 21</p>
-            <p>Genre: RnB</p>
-             <a href="">Attend</a>
+            <h4>Show in {{this.hostId.host.city}}</h4>
+            <p>Date and time:</p>
+             <p>Address: {{this.hostId.host.address}}</p>
+            <p>Tickets available: {{this.avalible}}</p>
+            <p>Genre: {{this.artisId.artist.genre}}</p>
+            {{#unless this.isAttending}}
+             <form method="POST" action="/events/{{this._id}}/attend">
+                <button type="submit">Attend</button>
+             </form>
+             {{else}}
+             <p><strong>Already registered</strong></p>
+             {{/unless}}
         </div>
     </article>
-    <article>
-        <div>
-             <img>
-            <h4>Show in Madrid</h4>
-                <p>Date and time: Dec 3rd 2018, 8:00pm</p>
-                <p>Address: Calle de José Ortega y Gasset, 67-57, 28006</p>
-                <p>Tickets available: 15</p>
-                <p>Genre: Rock</p>
-        </div>
-        <a href="">Attend</a>
-    </article>
-    <article>
-        <div>
-            <img>
-            <h4>Show in Barcelona</h4>
-                <p>Date and time: Dec 12 2018, 9:00 pm </p>
-                <p>Address: Carrer de Sant Pere Mitjà, 48, 08001</p>
-                <p>Tickets available: 21</p>
-                <p>Genre: Rock</p>
-                        <form action="/events/{{this._id}}/attend" method="POST">
-                            <button type="submit">Attend</button>
-                        </form>
-         </div>
-    </article>
-
-    <article>
-        <div>
-            <img>
-            <h4>Show in London</h4>
-                <p>Date and time: Jan 21 2019, 9:00 pm </p>
-                <p>Address: Porchester Square 34, the Colonnades 192, W27AR</p>
-                <p>Tickets available: 18</p>
-                <p>Genre: RnB</p>
-             <a href="">Attend</a>
-        </div>
-    </article>
+    {{/each}}
   
 </section>
 <script>
