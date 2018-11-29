@@ -5,6 +5,7 @@ const router = express.Router();
 const Event = require('../models/events');
 const Request = require('../models/request');
 const authMiddleware = require('../middleware/authmiddleware');
+const moment = require('moment');
 
 router.post('/:requestId', (req, res, next) => {
   const requestId = req.params.requestId;

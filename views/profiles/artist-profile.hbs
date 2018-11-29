@@ -1,6 +1,6 @@
 <section class="container section-height">
 
-<h1 class="h1-profile">Welcome to Your Profile, {{currentUser.artist.bandName}}</h1>
+<h1 class="h1-profile">Welcome Back to Your Profile, {{currentUser.artist.bandName}}</h1>
 
 <section class="section-profile">
     <p class="p-profile">Email: {{currentUser.email}}</p>
@@ -8,9 +8,14 @@
     <p class="p-profile">Genre: {{currentUser.artist.genre}}</p>
 </section>
 
-<section class="section-request">
-  <a href="/lists/my-requests-list">See Your Requests</a>
-
-</section>
+  <section>
+    <h3>See Your Upcoming Events:</h3>
+  </section>
+  {{#each events}}
+  <section>
+      <p>Date: {{this.hostId.host.scheduleTime}}  </p>
+      <p>Address: {{this.hostId.host.address}}, {{this.hostId.host.city}} </p>
+  </section>
+  {{/each}}
 </section>
 

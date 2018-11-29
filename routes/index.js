@@ -17,10 +17,11 @@ router.get('/', (req, res, next) => {
           if (req.session.currentUser && results[i].attendees[j].equals(req.session.currentUser._id)) {
             results[i].isAttending = true;
           }
-          results[i].avalible = results[i].hostId.host.roomCapacity - results[i].attendees.length;
+          results[i].available = results[i].hostId.host.roomCapacity - results[i].attendees.length;
         }
       }
       console.log(results.isAttending);
+
       res.render('index', { events: results });
     })
     .catch(next);
