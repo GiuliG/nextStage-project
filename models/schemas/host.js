@@ -23,7 +23,8 @@ const hostSchema = new Schema({
   },
   scheduleTime: {
     type: Date
-  }
+  },
+  imageUrl: String
 });
 
 module.exports = hostSchema;
