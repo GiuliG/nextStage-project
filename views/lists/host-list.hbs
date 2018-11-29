@@ -1,7 +1,7 @@
 <section class="section-height host-list-section">
-  <h2>This is your Hosts List</h2>
+  <h2>Find A Venue</h2>
   <hr>
-  {{#each users}}
+  {{#each hosts}}
   <div class="host-list-card">
     <div><img src="" alt="Living Room"></div> 
     <div>
@@ -10,11 +10,16 @@
       <p>Room Capacity: {{this.host.roomCapacity}}</p>
       <p>Available Time: {{this.host.scheduleTime}}</p>
     </div>
+
+    {{#unless this.isRequested}}
     <form method="POST" action="/lists/host-list/{{this._id}}">
       <div class="field submit">
         <button type="submit">Book</button>
       </div>
     </form>
+    {{else}}
+    <p>request sent</p>
+    {{/unless}}
   </div>
   {{/each}}
 
