@@ -1,6 +1,6 @@
 <section class="container">
 
-  <h1 class="h1-profile"><strong>Your Host Profile</strong></h1>
+  <h1 class="h1-profile"><strong class="your-host-profile">Your Host Profile</strong></h1>
 <!--
   <form method="POST" action="/auth/login">
   <div>
@@ -21,7 +21,7 @@
 
 -->
 
-  <section class="section-profile">
+  <section id="host-profile-card" class="section-profile">
 
       <p class="p-profile">Email: {{currentUser.email}}</p>
       <p class="p-profile">City: {{currentUser.host.city}}</p>
@@ -38,7 +38,7 @@
               value="2018-07-22"
               min="2018-01-01" max="2020-12-31">
       </section>
-      <button type="submit">Submit</button>
+      <button class="submit-button-host" type="submit">Submit</button>
  </form>
   
   <a href="/lists/my-requests">My Requests</a>

@@ -27,7 +27,7 @@ router.post('/signup', authMiddleware.requireAnon, formMiddleware.requireFieldsA
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        req.flash('validationError', 'email already exists');
+        req.flash('validationError', 'This email already exists, please try again');
         return res.redirect('/auth/signup');
       }
       // if everything is fine (no empty fields & user not exists), encrypt password
@@ -72,7 +72,7 @@ router.post('/signup-host', authMiddleware.requireAnon, formMiddleware.requireFi
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        req.flash('validationError', 'User already taken');
+        req.flash('validationError', 'This email has already been taken, please try again');
         return res.redirect('/auth/signup-host');
       }
       const salt = bcrypt.genSaltSync(saltRounds);
@@ -120,7 +120,7 @@ router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requir
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        req.flash('validationError', 'User already taken');
+        req.flash('validationError', 'This email has already been taken, please try again');
         return res.redirect('/auth/signup-artist');
       }
       const salt = bcrypt.genSaltSync(saltRounds);
@@ -156,14 +156,14 @@ router.post('/login', authMiddleware.requireAnon, formMiddleware.requireFieldsAt
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        req.flash('validationError', 'email or password incorrect');
+        req.flash('validationError', 'Email or password incorrect');
         return res.redirect('/auth/login');
       }
       if (bcrypt.compareSync(password, user.password)) {
         req.session.currentUser = user;
         res.redirect('/');
       } else {
-        req.flash('validationError', 'email or password incorrect');
+        req.flash('validationError', 'Email or password incorrect');
         res.redirect('/auth/login');
       }
     })

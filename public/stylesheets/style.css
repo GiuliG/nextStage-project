@@ -17,7 +17,6 @@ body {
   padding: 0;
   padding-top: 6%;
   font-family: 'Roboto', Arial, sans-serif;
-  /*font-family: 'Open Sans', sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   font-size: 110%;
   font-weight: 400;
   line-height: 150%;
@@ -29,6 +28,7 @@ h1 {
   line-height: 50px;
   font-family: 'Roboto', Arial, sans-serif;
   text-align: center;
+  color: #343a40;
   
 }
 
@@ -38,6 +38,10 @@ h2 {
 
 h4 {
   font-size: 120%;
+}
+
+form label {
+  color: #343a40;
 }
 
 p {
@@ -53,7 +57,6 @@ ul{
   color: rgb(245, 239, 239);
   font-size: 200%;
 }
-
 
 
 /* ---- layout ---- */
@@ -194,6 +197,7 @@ hr {
   width: 90%;
   margin: 10% auto;
   box-shadow: 0 0 48px -8px;
+  border-radius: 10px;
 }
 
 .host-list-section {
@@ -230,6 +234,13 @@ hr {
 .requests-card {
   box-shadow: 0 0 48px -8px;
 }
+
+.signup-link-loginpage{
+  text-decoration: none;
+  color: #00A6FF;
+  font-weight: bold;
+}
+
 
 
 /* ---- components ---- */
@@ -328,6 +339,13 @@ nav img{
   text-align: center;
 }
 
+.existing-member {
+  margin-top: -40px;
+}
+
+.your-host-profile {
+  color: #343a40;
+}
 
 
 /* -- FORMS -- */
@@ -342,14 +360,18 @@ form .field {
 
 form label {
 	display: block;
-	margin-bottom: 10px;
-	font-style: bold;
+  margin-bottom: 10px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: bold;
 }
 
 form input {
-  padding: 5px;
+  margin: 2%;
   font-size: 16px;
   margin-bottom: 14px;
+  padding: 3%;
+  border-radius: 10px;
+  border: 1px solid #343a40;
 }
 
 form .submit {
@@ -359,9 +381,10 @@ form .submit {
 
 
 
-form .validation {
+.validation {
   margin: 5px 0 10px;
   color: red;
+  font-weight: bolder;
 }
 
 form .field.has-error label {
@@ -397,22 +420,28 @@ form .field.has-error input {
 
 /* -- BUTTONS -- */
 
+/*
 
 .button {
   width: 88%;
-  background-color: red;
+  background-color: #00A6FF;
   color: #fff;
   border: 1px solid #fff
 }
+*/
 
 form .submit button {
   padding: 12px 20px;
   text-align: center;
   font-size: 18px;
-  background-color: #00A6FF; /* #58A4B0;  /* #27afdc; */
+  background-color: #00A6FF;
   cursor: pointer;
   border-radius: 20px 4px 20px 4px;
   border: none;
+  color: #f5f5f5;
+  font-weight: bold;
+  width: 50%;
+  margin-top: 5%;
 }
 
 .logout-button {
@@ -437,18 +466,18 @@ form .submit button {
   }
 
   .p-profile {
-    margin: 0;
-    border: 15px solid #f5f5f5;
+    margin: 5%;
+    border: 2px solid rgb(236, 233, 233);
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 20px;
-    padding: 10px
+    padding: 10px;
   }
 
   .section-profile {
     border: 3px solid #f5f5f5;
     border-radius: 10px;
     margin: 20px;
-    text-align: center
+    text-align: center;
   }
 
   .section-request {
@@ -459,5 +488,18 @@ form .submit button {
 
   .see-events-button {
     font-size: 120%;
+  }
+
+  .submit-button-host{
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #00A6FF;
+    cursor: pointer;
+    border-radius: 20px 4px 20px 4px;
+    border: none;
+    color: #f5f5f5;
+    font-weight: bold;
+    width: 50%;
   }
 
