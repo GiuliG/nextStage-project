@@ -7,9 +7,24 @@ const authMiddleware = require('../middleware/authmiddleware');
 const Request = require('../models/request');
 
 router.get('/host-list', authMiddleware.requireUserArtist, (req, res, next) => {
+  const artistId = req.session.currentUser._id;
+
   User.find({ role: 'Host' })
-    .then((users) => {
-      res.render('lists/host-list', { users });
+    .then((hosts) => {
+      // I am an artist and I am looking at a list of hosts that I can book
+      hosts.forEach((host) => {
+        Request.find({ hostId: host._id })
+          .then((results) => {
+            console.log(results);
+            results.forEach((requestItem) => {
+              if (requestItem.artistId.equals(artistId)) {
+                host.isRequested = true;
+              }
+            });
+          })
+          .catch(next);
+      });
+      res.render('lists/host-list', { hosts });
     })
     .catch(next);
 });
