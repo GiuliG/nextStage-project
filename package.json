@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "cloudinary": "^1.13.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.2",
     "cookie-parser": "~1.4.3",
@@ -26,6 +27,8 @@
     "moment": "^2.22.2",
     "mongoose": "^5.3.13",
     "morgan": "~1.9.0",
+    "multer": "^1.4.1",
+    "multer-storage-cloudinary": "^2.2.1",
     "typed.js": "^2.0.9"
   },
   "devDependencies": {

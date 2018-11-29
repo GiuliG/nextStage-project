@@ -1,6 +1,6 @@
 <section class="container">
 
-  <h1 class="h1-profile"><strong>Your Host Profile</strong></h1>
+  <h1 class="h1-profile"><strong class="your-host-profile">Your Host Profile</strong></h1>
 <!--
   <form method="POST" action="/auth/login">
   <div>
@@ -21,6 +21,28 @@
 
 -->
 
+  <section id="host-profile-card" class="section-profile">
+<h2>Host Image</h2>
+
+<img src="{{currentUser.host.imageUrl}}">
+
+
+
+<h2>Upload a new pic</h2>
+
+<form action='/users/upload-my-image' method="post" enctype="multipart/form-data">
+  <input type='file' name='image' accept="image/*"/>
+
+  <button type="submit">Upload Image</button>
+</form>
+
+{{#if messages.length}}
+<ul class="validation">
+  {{#each messages}}<li>{{this}}</li>{{/each}}
+</ul>
+{{/if}}
+
+
   <section class="section-profile">
 <h3>Your Personal Information: </h3>
       <p class="p-profile">Email: {{currentUser.email}}</p>
@@ -38,7 +60,7 @@
               value="2018-07-22"
               min="2018-01-01" max="2020-12-31">
       </section>
-      <button type="submit">Submit</button>
+      <button class="submit-button-host" type="submit">Submit</button>
  </form>
   
   <a href="/lists/my-requests">My Requests</a>
