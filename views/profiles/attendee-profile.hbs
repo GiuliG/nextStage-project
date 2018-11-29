@@ -4,18 +4,28 @@
      
 
     <h3>Your Upcoming Events:</h3>
-      {{#if this.isAttending}}
-   
-    {{#each events}}
-    <article>
-         <p>Date: {{this.hostId.host.scheduleTime}} </p>
-        <p>Location: Address: {{this.hostId.host.address}}, {{this.hostId.host.city}}</p>
-    </article>
-    {{/each}}
     
-    {{else}}
-    <p>No event yet.</p>
-    {{/if}}
+ {{#if isAttending}}
+       
+    {{#each events}}
+  
+    <article class="attendee-events">
+         <p>Date: {{this.hostId.host.scheduleTime}} </p>
+        <p>Location: {{this.hostId.host.address}}, {{this.hostId.host.city}}</p>
+          <p>Genre: {{this.artistId.artist.genre}}</p>
+    </article>
+    
+    {{/each}}
+
+  {{else}}
+        <p>No event yet</p>
+        {{/if}}
+
+   
+
+  
+  
+   
 
 
 

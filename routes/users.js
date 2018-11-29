@@ -14,10 +14,18 @@ router.get('/profiles/my-profile', (req, res, next) => {
       if (user.role === 'Host') {
         res.render('profiles/host-profile');
       } else if (user.role === 'Attendee') {
+        let isAttending;
         Event.find({ attendees: req.session.currentUser._id })
-          .populate('hostId')
-          .then((result) => {
-            res.render('profiles/attendee-profile', { events: result });
+          .populate('hostId').populate('artistId')
+          .then((results) => {
+            for (let i = 0; i < results.length; i++) {
+              for (let j = 0; j < results[i].attendees.length; j++) {
+                if (req.session.currentUser && results[i].attendees[j].equals(req.session.currentUser._id)) {
+                  isAttending = true;
+                }
+              }
+            }
+            res.render('profiles/attendee-profile', { events: results, isAttending });
           })
           .catch(next);
       } else if (user.role === 'Artist') {
