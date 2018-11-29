@@ -174,6 +174,7 @@ hr {
 .attendee-profile {
   text-align: center;
   width: 95%;
+  margin: 0 auto;
 }
 
 .icons-layout {
@@ -369,11 +370,6 @@ nav img{
   margin: 10px auto 30px auto;
 }
 
-.status-accepted{
-  color: rgb(31, 187, 31);
-  font-weight: bold;
-}
-
 
 /* -- FORMS -- */
 
@@ -556,4 +552,20 @@ form .submit button {
     margin-bottom: 10px;
     padding: 0;
     padding-bottom: 20px;
+  }
+
+  .checkevents-button {
+    background-color: #00A6FF;
+    width: 60%;
+    margin: 20px auto;
+    height: 50px;
+    border-radius: 40px 4px;
+    padding-top: 9px;
+  }
+
+  .checkevents-link {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-weight: bold;
+    margin-top: 10px;
   }
