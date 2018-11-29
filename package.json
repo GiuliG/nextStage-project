@@ -23,6 +23,7 @@
     "flash": "^1.1.0",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.13",
     "morgan": "~1.9.0",
     "typed.js": "^2.0.9"

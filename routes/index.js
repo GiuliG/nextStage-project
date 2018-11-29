@@ -21,6 +21,7 @@ router.get('/', (req, res, next) => {
         }
       }
       console.log(results.isAttending);
+
       res.render('index', { events: results });
     })
     .catch(next);

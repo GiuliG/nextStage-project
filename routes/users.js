@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Request = require('../models/request');
+const Event = require('../models/events');
 
 router.get('/profiles/my-profile', (req, res, next) => {
   const { _id } = req.session.currentUser;
@@ -13,9 +14,19 @@ router.get('/profiles/my-profile', (req, res, next) => {
       if (user.role === 'Host') {
         res.render('profiles/host-profile');
       } else if (user.role === 'Attendee') {
-        res.render('profiles/attendee-profile');
+        Event.find({ attendees: req.session.currentUser._id })
+          .populate('hostId')
+          .then((result) => {
+            res.render('profiles/attendee-profile', { events: result });
+          })
+          .catch(next);
       } else if (user.role === 'Artist') {
-        res.render('profiles/artist-profile');
+        Event.find({ artistId: req.session.currentUser._id })
+          .populate('hostId')
+          .then((result) => {
+            res.render('profiles/artist-profile', { events: result });
+          })
+          .catch(next);
       }
     })
     .catch(next);
@@ -28,6 +39,7 @@ router.post('/profiles/my-profile', (req, res, next) => {
   User.findByIdAndUpdate(userId, { $set: { 'host.scheduleTime': pickadate } }, { new: true })
     .then((result) => {
       console.log(result);
+
       return res.redirect('/users/profiles/my-profile');
     })
     .catch(next);

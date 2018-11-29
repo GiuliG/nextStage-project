@@ -1,12 +1,23 @@
 
 <section class="section-height attendee-profile">
-    <h1>Welcome to Your Profle</h1>
-    <h2>Your Upcoming Events:</h2>
-    
+    <h1>Welcome to Your Profile</h1>
+     
+
+    <h3>Your Upcoming Events:</h3>
+      {{#if this.isAttending}}
+   
     {{#each events}}
     <article>
-        <p>Location: {{this.hostId.host.city}}</p>
-        <p>Date:</p>
+         <p>Date: {{this.hostId.host.scheduleTime}} </p>
+        <p>Location: Address: {{this.hostId.host.address}}, {{this.hostId.host.city}}</p>
     </article>
     {{/each}}
+    
+    {{else}}
+    <p>No event yet.</p>
+    {{/if}}
+
+
+
+    <a href="/#events">Check Events</a>
 </section>
