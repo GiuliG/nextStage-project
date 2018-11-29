@@ -5,10 +5,12 @@
   <div class="requests-card">
   
     <div>
-      <p>Email: {{this.artistId}}</p>
+      <p>Email: {{this.artistId.email}}</p>
       <p>Band Name: {{this.artistId.artist.bandName}}</p>
       <p>Genre: {{this.artistId.artist.genre}}</p>
+      <p>Personal Link: <a href="{{this.artistId.artist.socialMediaLink}}"></a></p>
       <p>status: {{this.status}}</p>
+     
     </div>
 
     {{#unless this.hideButtons}}
@@ -24,7 +26,7 @@
       </div>
     </form>
     {{else}}
-    <p>No pending request</p>
+    <p>&nbsp;</p>
     {{/unless}}
     
   </div>
