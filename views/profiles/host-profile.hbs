@@ -13,9 +13,9 @@
       <h2>Upload a new pic</h2>
 
       <form class="upload-pics-form" action='/users/upload-my-image' method="post" enctype="multipart/form-data">
-        <input class="uplad-pics-input" type='file' name='image' accept="image/*"/>
+        <input class="upload-pics-input" type='file' name='image' accept="image/*"/>
 
-        <button type="submit">Upload Image</button>
+        <button class="upload-image-button" type="submit">Upload Image</button>
       </form>
 
       {{#if messages.length}}
