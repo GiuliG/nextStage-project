@@ -355,6 +355,17 @@ nav img{
   color: #343a40;
 }
 
+.request-sent {
+  color: rgb(31, 187, 31);
+  font-weight: bold;
+  margin: 10px auto 30px auto;
+}
+
+.status-accepted{
+  color: rgb(31, 187, 31);
+  font-weight: bold;
+}
+
 
 /* -- FORMS -- */
 
@@ -527,3 +538,14 @@ form .submit button {
   color: #f5f5f5;
   }
 
+  #accept-request {
+    margin-bottom: 10px;
+    padding: 0;
+
+  }
+
+  #decline-request {
+    margin-bottom: 10px;
+    padding: 0;
+    padding-bottom: 20px;
+  }

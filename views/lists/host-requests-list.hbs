@@ -8,16 +8,16 @@
       <p>Email: {{this.artistId.email}}</p>
       <p>Band Name: {{this.artistId.artist.bandName}}</p>
       <p>Genre: {{this.artistId.artist.genre}}</p>
-      <p>status: {{this.status}}</p>
+      <p>Status: <span class="status-accepted">{{this.status}}</span></p>
     </div>
     <form method="POST" action="/events/{{this._id}}">
-      <div class="field submit">
+      <div id="accept-request" class="field submit">
         <button type="submit">Accept</button>
       </div>
     </form>
 
     <form method="POST" action="/lists/{{this._id}}/decline">
-      <div class="field submit">
+      <div id="decline-request" class="field submit">
         <button type="submit">Decline</button>
       </div>
     </form>
