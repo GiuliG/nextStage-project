@@ -107,7 +107,6 @@ router.get('/signup-perform', authMiddleware.requireAnon, (req, res, next) => {
 
 router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requireFieldsArtist, (req, res, next) => {
   const { email, password, bandName, genre } = req.body;
-  console.log(req.body);
   const user = {
     email,
     password,
