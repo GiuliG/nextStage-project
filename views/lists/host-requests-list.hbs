@@ -3,13 +3,15 @@
   <hr class= "hr-your-requests">
   {{#each requests}}
   <div class="requests-card">
-    <div><img src="" alt="Living Room"></div> 
+  
     <div>
-      <p>Email: {{this.artistId.email}}</p>
+      <p>Email: {{this.artistId}}</p>
       <p>Band Name: {{this.artistId.artist.bandName}}</p>
       <p>Genre: {{this.artistId.artist.genre}}</p>
       <p>status: {{this.status}}</p>
     </div>
+
+    {{#unless this.hideButtons}}
     <form method="POST" action="/events/{{this._id}}">
       <div class="field submit">
         <button type="submit">Accept</button>
@@ -21,6 +23,10 @@
         <button type="submit">Decline</button>
       </div>
     </form>
+    {{else}}
+    <p>No pending request</p>
+    {{/unless}}
+    
   </div>
   <hr class= "hr-your-requests">
   {{/each}}

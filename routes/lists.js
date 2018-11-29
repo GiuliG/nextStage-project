@@ -15,7 +15,6 @@ router.get('/host-list', authMiddleware.requireUserArtist, (req, res, next) => {
       hosts.forEach((host) => {
         Request.find({ hostId: host._id })
           .then((results) => {
-            console.log(results);
             results.forEach((requestItem) => {
               if (requestItem.artistId.equals(artistId)) {
                 host.isRequested = true;
@@ -41,7 +40,7 @@ router.post('/host-list/:id', (req, res, next) => {
     status: 'pending'
   };
   Request.create(request)
-    .then((newRequest) => {
+    .then(() => {
       res.redirect('/lists/host-list');
     })
     .catch(next);
@@ -73,9 +72,13 @@ router.get('/my-requests', (req, res, next) => {
   const { _id } = req.session.currentUser;
   Request.find({ hostId: _id })
     .populate('artistId')
-    .then((result) => {
-      console.log(result);
-      res.render('lists/host-requests-list', { requests: result });
+    .then((requests) => {
+      requests.forEach((request) => {
+        if (request.status === 'accepted') {
+          request.hideButtons = true;
+        }
+      });
+      res.render('lists/host-requests-list', { requests });
     })
     .catch(next);
 });
@@ -86,7 +89,6 @@ router.get('/my-requests-list', (req, res, next) => {
   Request.find({ artistId: _id })
     .populate('hostId')
     .then((result) => {
-      console.log(result);
       res.render('lists/artist-requests-list', { requests: result });
     })
     .catch(next);
@@ -96,7 +98,6 @@ router.post('/:id/accept', (req, res, next) => {
   const id = req.params.id;
   Request.findByIdAndUpdate(id, { status: 'accepted' }, { new: true })
     .then((result) => {
-      console.log(result);
       res.redirect('/lists/my-requests');
     })
     .catch(next);
@@ -106,7 +107,6 @@ router.post('/:id/decline', (req, res, next) => {
   const id = req.params.id;
   Request.findByIdAndRemove(id)
     .then((result) => {
-      console.log(result);
       res.redirect('/lists/my-requests');
     })
     .catch(next);
