@@ -12,7 +12,6 @@ router.post('/:requestId', (req, res, next) => {
   const hostId = req.session.currentUser._id;
   Request.findByIdAndUpdate(requestId, { status: 'accepted' }, { new: true })
     .then((result) => {
-      console.log(result);
       const newEvent = new Event({
         hostId,
         artistId: result.artistId._id,
@@ -32,7 +31,6 @@ router.post('/:eventId/attend', authMiddleware.requireUser, (req, res, next) => 
   const userId = req.session.currentUser._id;
   Event.findByIdAndUpdate(eventId, { $push: { attendees: userId } }, { new: true })
     .then((result) => {
-      console.log(result);
       return res.redirect('/#events');
     })
     .catch(next);
@@ -44,7 +42,6 @@ router.get('/attendee-profile', (req, res, next) => {
   Event.find({ attendee: _id })
     .populate('hostId').populate('artistId')
     .then((result) => {
-      console.log(result);
       res.render('/attendee-profile', { events: result });
     })
     .catch(next);

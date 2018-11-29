@@ -48,8 +48,6 @@ router.post('/profiles/my-profile', (req, res, next) => {
 
   User.findByIdAndUpdate(userId, { $set: { 'host.scheduleTime': pickadate } }, { new: true })
     .then((result) => {
-      console.log(result);
-
       return res.redirect('/users/profiles/my-profile');
     })
     .catch(next);
@@ -62,13 +60,13 @@ router.post('/upload-my-image', parser.single('image'), (req, res, next) => {
     return;
   }
   const userId = req.session.currentUser._id;
-  console.log(req.file);
+
   const imageUrl = req.file.url;
 
   User.findByIdAndUpdate(userId, { $set: { 'host.imageUrl': imageUrl } }, { new: true })
     .then((user) => {
       req.session.currentUser = user;
-      console.log(user);
+
       return res.redirect('/users/profiles/my-profile');
     })
     .catch(next);
