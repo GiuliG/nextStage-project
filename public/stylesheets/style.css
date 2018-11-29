@@ -207,6 +207,7 @@ hr {
 
 .upcoming-events-card {
   box-shadow: 0 0 48px -8px;
+  margin: 20px auto;
 }
 
 .event-title {
@@ -216,10 +217,13 @@ hr {
 .attend-button {
   background-color: #00A6FF;
   border: none;
-  border-radius: 15px 2px 15px 2px;
-  width: 30%;
-  height: 25px;
+  border-radius: 40px 4px 40px 4px;
+  width: 70%;
+  height: 50px;
   margin: 5% 0;
+  color: #F8F9F9;
+  font-weight: bold;
+  font-size: 110%;
 }
 
 .request-section-layout {
@@ -239,6 +243,10 @@ hr {
   text-decoration: none;
   color: #00A6FF;
   font-weight: bold;
+}
+
+img {
+  width: 100%;
 }
 
 
