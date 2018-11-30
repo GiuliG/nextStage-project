@@ -9,13 +9,17 @@
 </section>
 
   <section>
-    <h3>See Your Upcoming Events:</h3>
+    <h3>Your Upcoming Events:</h3>
   </section>
+  {{#unless events.length}}
+  <p>You have no event yet.</p>
+  {{else}}
   {{#each events}}
   <section>
       <p>Date: {{this.hostId.host.scheduleTime}}  </p>
       <p>Address: {{this.hostId.host.address}}, {{this.hostId.host.city}} </p>
   </section>
   {{/each}}
+  {{/unless}}
 </section>
 
