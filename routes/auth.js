@@ -106,14 +106,15 @@ router.get('/signup-perform', authMiddleware.requireAnon, (req, res, next) => {
 });
 
 router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requireFieldsArtist, (req, res, next) => {
-  const { email, password, bandName, genre } = req.body;
+  const { email, password, bandName, genre, socialMediaLink } = req.body;
   const user = {
     email,
     password,
     role: 'Artist',
     artist: {
       bandName,
-      genre
+      genre,
+      socialMediaLink
     }
   };
   User.findOne({ email })
@@ -130,7 +131,8 @@ router.post('/signup-perform', authMiddleware.requireAnon, formMiddleware.requir
         role: 'Artist',
         artist: {
           bandName,
-          genre
+          genre,
+          socialMediaLink
         }
       })
         .then((newUser) => {
