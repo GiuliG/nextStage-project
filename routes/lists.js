@@ -7,9 +7,8 @@ const authMiddleware = require('../middleware/authmiddleware');
 const Request = require('../models/request');
 
 router.get('/host-list', authMiddleware.requireUserArtist, async (req, res, next) => {
-  const artistId = req.session.currentUser._id;
-
   try {
+    const artistId = req.session.currentUser._id;
     const hosts = await User.find({ role: 'Host' });
     for (let i = 0; i < hosts.length; i++) {
       const requests = await Request.find({ hostId: hosts[i]._id });
