@@ -6,26 +6,23 @@ const User = require('../models/user');
 const authMiddleware = require('../middleware/authmiddleware');
 const Request = require('../models/request');
 
-router.get('/host-list', authMiddleware.requireUserArtist, (req, res, next) => {
+router.get('/host-list', authMiddleware.requireUserArtist, async (req, res, next) => {
   const artistId = req.session.currentUser._id;
 
-  User.find({ role: 'Host' })
-    .then((hosts) => {
-      // I am an artist and I am looking at a list of hosts that I can book
-      hosts.forEach((host) => {
-        Request.find({ hostId: host._id })
-          .then((results) => {
-            results.forEach((requestItem) => {
-              if (requestItem.artistId.equals(artistId)) {
-                host.isRequested = true;
-              }
-            });
-          })
-          .catch(next);
+  try {
+    const hosts = await User.find({ role: 'Host' });
+    for (let i = 0; i < hosts.length; i++) {
+      const requests = await Request.find({ hostId: hosts[i]._id });
+      requests.forEach((requestItem) => {
+        if (requestItem.artistId.equals(artistId)) {
+          hosts[i].isRequested = true;
+        }
       });
-      res.render('lists/host-list', { hosts });
-    })
-    .catch(next);
+    }
+    res.render('lists/host-list', { hosts });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/host-list/:id', (req, res, next) => {
