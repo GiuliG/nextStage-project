@@ -4,12 +4,12 @@
   {{#each requests}}
   <div class="requests-card">
   
-    <div>
-      <p>Email: {{this.artistId.email}}</p>
-      <p>Band Name: {{this.artistId.artist.bandName}}</p>
-      <p>Genre: {{this.artistId.artist.genre}}</p>
-      <p>Personal Link: <a href="{{this.artistId.artist.socialMediaLink}}"></a></p>
-      <p>Status:{{this.status}}</p>
+    <div class="requests-card-info">
+      <p><b>Email</b>: {{this.artistId.email}}</p>
+      <p><b>Band Name</b>: {{this.artistId.artist.bandName}}</p>
+      <p><b>Genre</b>: {{this.artistId.artist.genre}}</p>
+      <p><b>Social Media Link</b>: <a href="{{this.artistId.artist.socialMediaLink}}"></a></p>
+      <p><b>Status</b>:{{this.status}}</p>
      
     </div>
 

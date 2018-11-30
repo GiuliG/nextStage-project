@@ -44,10 +44,12 @@
     <article class="upcoming-events-card">
         <img src="{{this.hostId.host.imageUrl}}">
         <h4>Show in {{this.hostId.host.city}}</h4>
-        <p>Date and time: {{this.hostId.host.scheduleTime}}</p>
-            <p>Address: {{this.hostId.host.address}}</p>
-        <p>Tickets available: {{this.available}}</p>
-        <p>Genre: {{this.artistId.artist.genre}}</p>
+        <div class="upcoming-events-card-info">
+            <p><b>Date and time</b>: {{this.hostId.host.scheduleTime}}</p>
+            <p><b>Address</b>: {{this.hostId.host.address}}</p>
+            <p><b>Tickets available</b>: {{this.available}}</p>
+            <p><b>Genre</b>: {{this.artistId.artist.genre}}</p>
+        </div>
         {{#unless this.isAttending}}
         <form method="POST" action="/events/{{this._id}}/attend">
             <button class="attend-button" type="submit">Attend</button>

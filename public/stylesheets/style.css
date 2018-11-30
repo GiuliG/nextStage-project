@@ -151,8 +151,13 @@ main{
 }
 
 .auto-type{
-  width: 91%;
+  width: 81%;
   margin: 10% auto;
+}
+
+.host-list-personal-info {
+  margin: 0 5%;
+  text-align: left;
 }
 
 
@@ -190,7 +195,9 @@ hr {
 }
 
 .attendee-events {
-  border: 1px solid #343a40;
+  box-shadow: 0 0 48px -8px;
+  text-align: left;
+  padding: 5%;
 }
 
 .host-list-card {
@@ -209,6 +216,12 @@ hr {
 .upcoming-events-card {
   box-shadow: 0 0 48px -8px;
   margin: 20px auto;
+  padding-bottom: 10px;
+}
+
+.upcoming-events-card-info {
+  text-align: left;
+  margin-left: 8%;
 }
 
 .event-title {
@@ -238,6 +251,9 @@ hr {
 
 .requests-card {
   box-shadow: 0 0 48px -8px;
+  padding: 5% 0;
+  width: 90%;
+  margin: auto;
 }
 
 .signup-link-loginpage{
@@ -299,6 +315,15 @@ nav img{
   width: 80%;
 }
 
+.host-list-info-layout {
+  padding: 5% 0;
+}
+
+.requests-card-info {
+  text-align: left;
+  padding-left: 8%;
+}
+
 /* BURGER MENU */
 
 
@@ -350,14 +375,10 @@ nav img{
   opacity: 0.95;
   width: 100%;
   height: 100vh;
-  transition: all 1.4s;
+  transition: all 0.4s;
   font-size: 19px;
   z-index: 0;
   text-align: center;
-}
-
-.existing-member {
-  margin-top: -40px;
 }
 
 .your-host-profile {
@@ -397,13 +418,6 @@ form input {
   border: 1px solid #343a40;
 }
 
-form .submit {
-  padding-top: 10px;
-  padding-bottom: 60px;
-}
-
-
-
 .validation {
   margin: 5px 0 10px;
   color: red;
@@ -425,7 +439,6 @@ form .field.has-error input {
   background-color: #343a40;
   color: rgba(255, 255, 255, 0.63);
   font-family: 'Open Sans', sans-serif;
-  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
   font-size: 18px;
   border-top: 1px solid rgb(170, 168, 168); 
   width: 100vw;
@@ -551,7 +564,6 @@ form .submit button {
   #decline-request {
     margin-bottom: 10px;
     padding: 0;
-    padding-bottom: 20px;
   }
 
   .checkevents-button {

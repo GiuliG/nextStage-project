@@ -4,23 +4,26 @@
   {{#each hosts}}
   <div class="host-list-card">
     <div><img src="{{this.host.imageUrl}}" alt="Living Room"></div> 
-    <div>
-      <p>Email: {{this.email}}</p>
-      <p>City: {{this.host.city}}</p>
-      <p>Room Capacity: {{this.host.roomCapacity}}</p>
-      <p>Available Time: {{this.host.scheduleTime}}</p>
-    </div>
-
-    {{#unless this.isRequested}}
-    <form method="POST" action="/lists/host-list/{{this._id}}">
-      <div class="field submit">
-        <button type="submit">Book</button>
+    <div class="host-list-info-layout">
+      <div class="host-list-personal-info">
+        <p><b>Email</b>: {{this.email}}</p>
+        <p><b>City</b>: {{this.host.city}}</p>
+        <p><b>Room capacity</b>: {{this.host.roomCapacity}}</p>
+        <p><b>Available Time</b>: {{this.host.scheduleTime}}</p>
       </div>
-    </form>
-    {{else}}
-    <p class="request-sent">Request sent</p>
-    {{/unless}}
+
+      {{#unless this.isRequested}}
+      <form method="POST" action="/lists/host-list/{{this._id}}">
+        <div class="field submit">
+          <button type="submit">Book</button>
+        </div>
+      </form>
+      {{else}}
+      <p class="request-sent">Request sent</p>
+      {{/unless}}
+    </div>
   </div>
   {{/each}}
+  
 
 </section>
