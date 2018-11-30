@@ -10,9 +10,9 @@
     {{#each events}}
   
     <article class="attendee-events">
-         <p>Date: {{this.hostId.host.scheduleTime}} </p>
+        <p>Date: {{this.hostId.host.scheduleTime}} </p>
         <p>Location: {{this.hostId.host.address}}, {{this.hostId.host.city}}</p>
-          <p>Genre: {{this.artistId.artist.genre}}</p>
+        <p>Genre: {{this.artistId.artist.genre}}</p>
     </article>
     
     {{/each}}
@@ -28,6 +28,7 @@
    
 
 
-
-    <a href="/#events">Check Events</a>
+    <div class="checkevents-button">
+        <a class="checkevents-link" href="/#events">Check Events</a>
+    </div>
 </section>
