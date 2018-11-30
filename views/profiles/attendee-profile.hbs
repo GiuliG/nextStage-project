@@ -5,8 +5,11 @@
 
     <h3>Your Upcoming Events:</h3>
     
- {{#if isAttending}}
+ {{#unless events.length}}
        
+        <p>You haven't registered for any event yet! </p>
+
+        {{else}}
     {{#each events}}
   
     <article class="attendee-events">
@@ -17,9 +20,8 @@
     
     {{/each}}
 
-  {{else}}
-        <p>You haven't registered for any event yet!</p>
-        {{/if}}
+  
+        {{/unless}}
 
    
 
